@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: e4eefc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPageController">
+   <children>
+      <AnchorPane id="bgPane" prefHeight="400.0" prefWidth="225.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="36.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cropped-Logo-ITC.png" />
+               </image>
+            </ImageView>
+            <Label id="coverText" layoutX="45.0" layoutY="84.0" text="Welcome User!">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label id="coverText" layoutX="75.0" layoutY="338.0" text="Developed by" />
+            <Label id="coverText" layoutX="86.0" layoutY="361.0" text="Group 3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="242.0" layoutY="25.0" prefHeight="45.0" prefWidth="343.0" text="Student Management Program">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="359.0" layoutY="70.0" prefHeight="37.0" prefWidth="110.0" text="Login Page">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="138.0" text="Username">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameField" layoutX="300.0" layoutY="167.0" prefHeight="25.0" prefWidth="255.0" promptText="Username" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="260.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1177568.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="300.0" layoutY="209.0" text="Password">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordField" layoutX="300.0" layoutY="240.0" prefHeight="25.0" prefWidth="255.0" promptText="Password" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="260.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1000915.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="260.0" layoutY="297.0" mnemonicParsing="false" onAction="#login" prefHeight="37.0" prefWidth="301.0" style="-fx-background-color: c7defa;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="414.0" layoutY="351.0" mnemonicParsing="false" onAction="#Signup" prefHeight="21.0" prefWidth="73.0" style="-fx-background-color: #e4eefc;" text="Signup" textFill="#1969f4" underline="true" />
+      <Label layoutX="303.0" layoutY="355.0" prefHeight="17.0" prefWidth="127.0" text="Don't have an account?" />
+   </children>
+</AnchorPane>
