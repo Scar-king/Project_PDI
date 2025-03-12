@@ -16,6 +16,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 public class SignUPController {
 
@@ -37,9 +41,10 @@ public class SignUPController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
+        // Validate user input
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             showAlert("Error", "All fields are required", AlertType.ERROR);
-            return; 
+            return;
         }
 
         if (!isValidUsername(username)) {
@@ -57,12 +62,19 @@ public class SignUPController {
             return;
         }
 
+        // Generate a random salt
+        String salt = generateSalt();
+
+        // Hash the password with the salt
+        String hashedPassword = hashPasswordSHA256(password, salt);
+
         try (Connection connection = UserConnection.getConnection()) {
-            String query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+            String query = "INSERT INTO users (username, email, password, salt) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, email);
-            preparedStatement.setString(3, password);
+            preparedStatement.setString(3, hashedPassword);  
+            preparedStatement.setString(4, salt);  
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -116,9 +128,37 @@ public class SignUPController {
 
     private boolean isValidPassword(String password) {
         return password.length() >= 8
-                && password.matches(".*[A-Z].*")  
-                && password.matches(".*[0-9].*")  
-                && password.matches(".*[!@#$%^&*(),.?\":{}|<>].*"); 
+                && password.matches(".*[A-Z].*")
+                && password.matches(".*[0-9].*")
+                && password.matches(".*[!@#$%^&*(),.?\":{}|<>].*");
+    }
+
+    // Generate salt using SecureRandom for better security
+    private String generateSalt() {
+        byte[] saltBytes = new byte[16];
+        new SecureRandom().nextBytes(saltBytes);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : saltBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
+
+    // Hash password with salt using SHA-256
+    private String hashPasswordSHA256(String password, String salt) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            String saltedPassword = salt + password;
+            byte[] hashedBytes = digest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashedBytes) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password", e);
+        }
     }
 }
-

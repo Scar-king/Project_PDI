@@ -39,9 +39,9 @@ public class AddStudentController {
 
     @FXML
     public void addStudent(ActionEvent event) {
-        // Validate all fields before proceeding
+
         if (isInputValid()) {
-            // Create a confirmation alert
+
             Alert alert = new Alert(AlertType.CONFIRMATION);
 
             Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
@@ -64,8 +64,7 @@ public class AddStudentController {
                 int endYear = Integer.parseInt(endYearField.getText());
 
                 if (DatabaseUtil.isStudentDuplicate(studentID)) {
-                    System.out.println("Duplicate student ID detected: " + studentID);
-                    showErrorAlert("A student with the same ID already exists.");
+                    showAlert("Error", "A student with the same ID already exists.", AlertType.ERROR);
                     return;
                 }
                 
@@ -75,9 +74,9 @@ public class AddStudentController {
 
                 boolean dbAdded = DatabaseUtil.addStudentToDB(newStudent);
                 if (dbAdded) {
-                    showSuccessAlert();
+                    showAlert("Success", "Student Added Successfully", AlertType.INFORMATION);
                 } else {
-                    showErrorAlert("Failed to add student to the database.");
+                    showAlert("Error", "Failed to add student to the database.", AlertType.ERROR);
                 }
 
                 goToHomePage(event);
@@ -90,7 +89,7 @@ public class AddStudentController {
             ageField.getText().isEmpty() || majorField.getText().isEmpty() || studentEmailField.getText().isEmpty() ||
             startYearField.getText().isEmpty() || endYearField.getText().isEmpty()) {
 
-            showErrorAlert("All fields must be filled out.");
+            showAlert("Error", "All fields must be filled out.", AlertType.ERROR);
             return false;
         }
 
@@ -98,11 +97,11 @@ public class AddStudentController {
         try {
             age = Integer.parseInt(ageField.getText());
             if (age < 4 || age > 50) {
-                showErrorAlert("Age must be between 4 and 50!");
+                showAlert("Error", "Age must be between 4 and 50!", AlertType.ERROR);
                 return false;
             }
         } catch (NumberFormatException e) {
-            showErrorAlert("Age must be a valid integer.");
+            showAlert("Error", "Age must be a valid integer.", AlertType.ERROR);
             return false;
         }
 
@@ -111,36 +110,30 @@ public class AddStudentController {
             startYear = Integer.parseInt(startYearField.getText());
             endYear = Integer.parseInt(endYearField.getText());
         } catch (NumberFormatException e) {
-            showErrorAlert("Start year and end year must be valid integers.");
+            showAlert("Error", "Start year and end year must be valid integers.", AlertType.ERROR);
             return false;
         }
 
         if (endYear < startYear) {
-            showErrorAlert("End year must be greater than or equal to start year.");
+            showAlert("Error", "End year must be greater than or equal to start year.", AlertType.ERROR);
             return false;
         }
 
         String gender = genderField.getText().toUpperCase(); 
         if (!gender.equals("M") && !gender.equals("F")) {
-            showErrorAlert("Gender must be either 'M' or 'F'.");
+            showAlert("Error", "Gender must be either 'M' or 'F'.", AlertType.ERROR);
             return false;
         }
 
         return true;
     }
 
-    private void showSuccessAlert() {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Success");
-        alert.setHeaderText("Student Added Successfully");
-        alert.setContentText("The student has been added to the database successfully.");
-        alert.showAndWait();
-    }
-
-    private void showErrorAlert(String message) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText("Error Adding Student");
+    private void showAlert(String title, String message, AlertType type) {
+        Alert alert = new Alert(type);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
+        alert.setTitle(title);
+        alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }

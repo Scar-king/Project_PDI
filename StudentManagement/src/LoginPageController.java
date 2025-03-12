@@ -11,6 +11,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,23 +41,34 @@ public class LoginPageController {
         }
 
         try (Connection connection = UserConnection.getConnection()) {
-            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+            String query = "SELECT password, salt FROM users WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
 
-                showAlert("Success", "Login successful!", AlertType.INFORMATION);
+                String storedHashedPassword = resultSet.getString("password");
+                String salt = resultSet.getString("salt");
 
-                root = FXMLLoader.load(getClass().getResource("HomePage.fxml")); 
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                // Hash entered password with stored salt
+                String hashedEnteredPassword = hashPasswordSHA256(password, salt);
+
+                if (hashedEnteredPassword.equals(storedHashedPassword)) {
+                    showAlert("Success", "Login successful!", AlertType.INFORMATION);
+    
+                    // Navigate to HomePage after successful login
+                    root = FXMLLoader.load(getClass().getResource("HomePage.fxml")); 
+                    stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    showAlert("Error", "Invalid USERNAME or PASSWORD.", AlertType.ERROR);
+                }
+
             } else {
-                showAlert("Error", "Invalid USERNAME or PASSWORD.", AlertType.ERROR);
+                showAlert("Error", "User not found!", AlertType.ERROR);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,6 +85,7 @@ public class LoginPageController {
         stage.show();
     }
 
+    // Show alert method
     public void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
         stage = (Stage) alert.getDialogPane().getScene().getWindow();
@@ -79,5 +94,24 @@ public class LoginPageController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    // Hash the password with SHA-256 and salt
+    private String hashPasswordSHA256(String password, String salt) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            String saltedPassword = salt + password;  // Combine salt and password
+            byte[] hashedBytes = digest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
+
+            // Convert the byte array to a hex string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashedBytes) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password", e);
+        }
     }
 }
