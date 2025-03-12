@@ -1,0 +1,51 @@
+/* Default button style */
+.button {
+    -fx-background-color: #1969f4;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for the login button */
+.button:hover {
+    -fx-background-color: #155bb5;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05; /* Slightly increase size for hover effect */
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for the login button */
+.button:pressed {
+    -fx-background-color: #10478f;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2); /* Smaller shadow when pressed */
+}
+
+/* Transparent sign up button style */
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1969f4;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+    -fx-padding: 0 5;
+    -fx-transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.transparent-button:hover {
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-scale-x: 1.05; 
+    -fx-scale-y: 1.05;
+}
+
+/* Active (pressed) effect for the transparent sign up button */
+.transparent-button:pressed {
+    -fx-text-fill: white;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+}
