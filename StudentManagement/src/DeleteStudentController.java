@@ -1,3 +1,5 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -9,14 +11,60 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import javafx.scene.control.TableView;  // Import TableView
+import javafx.scene.control.TableColumn; // Import TableColumn
+import javafx.scene.control.cell.PropertyValueFactory; // Import PropertyValueFactory
+
 import java.io.IOException;
 
 public class DeleteStudentController {
+
+    public static ObservableList<Student> students = FXCollections.observableArrayList();
 
     @FXML
     private TextField studentIDField;
     @FXML
     private Button deleteButton;
+    
+    @FXML
+    private TableView<Student> studentTable;  // Declare TableView here
+
+    @FXML
+    private TableColumn<Student, String> idColumn;
+    @FXML
+    private TableColumn<Student, String> nameColumn;
+    @FXML
+    private TableColumn<Student, String> genderColumn;
+    @FXML
+    private TableColumn<Student, Integer> ageColumn;
+    @FXML
+    private TableColumn<Student, String> majorColumn;
+    @FXML
+    private TableColumn<Student, String> emailColumn;
+    @FXML
+    private TableColumn<Student, Integer> startYearColumn;
+    @FXML
+    private TableColumn<Student, Integer> endYearColumn;
+
+    // Method to initialize and load student data into the table
+    @FXML
+    public void initialize() {
+        // Initialize the table columns with corresponding property values
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("studentID"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+        majorColumn.setCellValueFactory(new PropertyValueFactory<>("major"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("studentEmail"));
+        startYearColumn.setCellValueFactory(new PropertyValueFactory<>("startYear"));
+        endYearColumn.setCellValueFactory(new PropertyValueFactory<>("endYear"));
+
+        // Load the student data from the database (or from the Controller)
+        students = DatabaseUtil.loadStudentsFromDB();
+        
+        // Update the table items to reflect the loaded data
+        studentTable.setItems(students);
+    }
 
     // Handle the delete action
     @FXML
@@ -25,11 +73,21 @@ public class DeleteStudentController {
 
         // Search for student by ID and remove them if found
         boolean deleted = false;
-        for (Student student : Controller.students) {
+        Student studentToDelete = null;  // Keep reference to the student we want to delete
+        for (Student student : students) {
             if (student.getStudentID().equals(studentID)) {
-                Controller.students.remove(student);  // Remove from the ObservableList
-                deleted = true;
+                studentToDelete = student;  // Found the student
                 break;
+            }
+        }
+
+        if (studentToDelete != null) {
+            // Remove from the ObservableList
+            students.remove(studentToDelete);
+            // Remove from the database
+            boolean dbDeleted = DatabaseUtil.deleteStudentFromDB(studentToDelete.getStudentID());
+            if (dbDeleted) {
+                deleted = true;
             }
         }
 

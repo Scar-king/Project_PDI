@@ -2,36 +2,80 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DeleteStudentController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DeleteStudentController">
    <children>
-      <!-- Title -->
-      <Label layoutX="100.0" layoutY="50.0" text="Delete Student" style="-fx-font-weight: bold;">
+      <TableView fx:id="studentTable" layoutX="50.0" layoutY="108.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #cccccc;                        -fx-border-radius: 10px; -fx-border-width: 2px;">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="100" style="-fx-alignment: CENTER;" text="ID">
+               <cellValueFactory>
+                  <PropertyValueFactory property="studentID" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="nameColumn" prefWidth="150" style="-fx-alignment: CENTER;" text="NAME">
+               <cellValueFactory>
+                  <PropertyValueFactory property="name" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="genderColumn" prefWidth="80" style="-fx-alignment: CENTER;" text="GENDER">
+               <cellValueFactory>
+                  <PropertyValueFactory property="gender" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="ageColumn" prefWidth="50.0" style="-fx-alignment: CENTER;" text="AGE">
+               <cellValueFactory>
+                  <PropertyValueFactory property="age" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="majorColumn" prefWidth="120.0" style="-fx-alignment: CENTER;" text="MAJOR">
+               <cellValueFactory>
+                  <PropertyValueFactory property="major" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="emailColumn" prefWidth="180.0" style="-fx-alignment: CENTER;" text="EMAIL">
+               <cellValueFactory>
+                  <PropertyValueFactory property="studentEmail" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="startYearColumn" prefWidth="80" style="-fx-alignment: CENTER;" text="START YEAR">
+               <cellValueFactory>
+                  <PropertyValueFactory property="startYear" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="endYearColumn" prefWidth="80" style="-fx-alignment: CENTER;" text="END YEAR">
+               <cellValueFactory>
+                  <PropertyValueFactory property="endYear" />
+               </cellValueFactory>
+            </TableColumn>
+         </columns>
+      </TableView>
+
+      <Label layoutX="100.0" layoutY="50.0" style="-fx-font-weight: bold;" text="Delete Student">
          <font>
             <Font name="Arial" size="24.0" />
          </font>
       </Label>
 
-      <!-- Student ID -->
-      <Label layoutX="100.0" layoutY="100.0" text="Student ID">
+      <Label layoutX="100.0" layoutY="450.0" text="Student ID">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="studentIDField" layoutX="200.0" layoutY="95.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter Student ID to Delete" />
+      <TextField fx:id="studentIDField" layoutX="200.0" layoutY="445.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter Student ID to Delete" />
 
-      <!-- Delete Button -->
-      <Button fx:id="deleteButton" layoutX="100.0" layoutY="150.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f28d82;" text="Delete Student" textFill="WHITE">
+      <Button fx:id="deleteButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Delete Student" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
 
-      <!-- Back Button -->
-      <Button layoutX="100.0" layoutY="200.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f39c12;" text="Back to Home" textFill="WHITE">
+      <Button layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>

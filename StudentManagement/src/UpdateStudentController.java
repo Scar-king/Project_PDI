@@ -38,31 +38,25 @@ public class UpdateStudentController {
         String studentID = studentIDField.getText();
         String name = nameField.getText();
         String gender = genderField.getText();
-        int age = Integer.parseInt(ageField.getText());
-        String major = majorField.getText();
-        String studentEmail = emailField.getText();
-        int startYear = Integer.parseInt(startYearField.getText());
-        int endYear = Integer.parseInt(endYearField.getText());
-
-        boolean updated = false;
-        for (Student student : Controller.students) {
-            if (student.getStudentID().equals(studentID)) {
-                student.setName(name);
-                student.setGender(gender);
-                student.setAge(age);
-                student.setMajor(major);
-                student.setStudentEmail(studentEmail);
-                student.setStartYear(startYear);
-                student.setEndYear(endYear);
-                updated = true;
-                break;
+        String email = emailField.getText();
+        
+        // Validate numeric inputs
+        try {
+            int age = Integer.parseInt(ageField.getText());
+            int startYear = Integer.parseInt(startYearField.getText());
+            int endYear = Integer.parseInt(endYearField.getText());
+            
+            Student student = new Student(studentID, name, gender, age, majorField.getText(), email, startYear, endYear);
+            
+            boolean updated = DatabaseUtil.updateStudentInDB(student);
+            
+            if (updated) {
+                showAlert("Success", "Student updated successfully!", AlertType.INFORMATION);
+            } else {
+                showAlert("Error", "Failed to update student. Please check the ID and try again.", AlertType.ERROR);
             }
-        }
-
-        if (updated) {
-            showAlert("Student Updated", "The student's details were successfully updated.", AlertType.INFORMATION);
-        } else {
-            showAlert("Student Not Found", "No student with the provided ID was found.", AlertType.ERROR);
+        } catch (NumberFormatException e) {
+            showAlert("Invalid Input", "Please enter valid numeric values for Age, Start Year, and End Year.", AlertType.ERROR);
         }
     }
 

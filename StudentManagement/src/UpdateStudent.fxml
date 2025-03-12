@@ -6,16 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #e4eefc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UpdateStudentController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UpdateStudentController">
    <children>
-      <!-- Title -->
+
       <Label layoutX="100.0" layoutY="50.0" style="-fx-font-weight: bold;" text="Update Student">
          <font>
             <Font name="Arial" size="24.0" />
          </font>
       </Label>
 
-      <!-- Student ID -->
       <Label layoutX="100.0" layoutY="100.0" text="Student ID">
          <font>
             <Font size="15.0" />
@@ -23,7 +22,6 @@
       </Label>
       <TextField fx:id="studentIDField" layoutX="200.0" layoutY="95.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter Student ID" />
 
-      <!-- Name -->
       <Label layoutX="100.0" layoutY="150.0" text="Name">
          <font>
             <Font size="15.0" />
@@ -31,7 +29,6 @@
       </Label>
       <TextField fx:id="nameField" layoutX="200.0" layoutY="145.0" prefHeight="30.0" prefWidth="250.0" promptText="Name" />
 
-      <!-- Gender -->
       <Label layoutX="100.0" layoutY="200.0" text="Gender">
          <font>
             <Font size="15.0" />
@@ -39,7 +36,6 @@
       </Label>
       <TextField fx:id="genderField" layoutX="200.0" layoutY="195.0" prefHeight="30.0" prefWidth="250.0" promptText="Gender" />
 
-      <!-- Age -->
       <Label layoutX="100.0" layoutY="250.0" text="Age">
          <font>
             <Font size="15.0" />
@@ -47,7 +43,6 @@
       </Label>
       <TextField fx:id="ageField" layoutX="200.0" layoutY="245.0" prefHeight="30.0" prefWidth="250.0" promptText="Age" />
 
-      <!-- Major -->
       <Label layoutX="100.0" layoutY="300.0" text="Major">
          <font>
             <Font size="15.0" />
@@ -55,7 +50,6 @@
       </Label>
       <TextField fx:id="majorField" layoutX="200.0" layoutY="295.0" prefHeight="30.0" prefWidth="250.0" promptText="Major" />
 
-      <!-- Student Email -->
       <Label layoutX="100.0" layoutY="350.0" text="Student Email">
          <font>
             <Font size="15.0" />
@@ -63,7 +57,6 @@
       </Label>
       <TextField fx:id="emailField" layoutX="200.0" layoutY="345.0" prefHeight="30.0" prefWidth="250.0" promptText="Student Email" />
 
-      <!-- Start Year -->
       <Label layoutX="100.0" layoutY="400.0" text="Start Year">
          <font>
             <Font size="15.0" />
@@ -71,7 +64,6 @@
       </Label>
       <TextField fx:id="startYearField" layoutX="200.0" layoutY="395.0" prefHeight="30.0" prefWidth="250.0" promptText="Start Year" />
 
-      <!-- End Year -->
       <Label layoutX="100.0" layoutY="450.0" text="End Year">
          <font>
             <Font size="15.0" />
@@ -79,15 +71,13 @@
       </Label>
       <TextField fx:id="endYearField" layoutX="200.0" layoutY="445.0" prefHeight="30.0" prefWidth="250.0" promptText="End Year" />
 
-      <!-- Update Button -->
-      <Button fx:id="updateButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #c7defa;" text="Update Student" textFill="WHITE">
+      <Button fx:id="updateButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #3498db; -fx-background-radius: 20;" text="Update Student" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
 
-      <!-- Back Button -->
-      <Button layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f39c12;" text="Back to Home" textFill="WHITE">
+      <Button layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>

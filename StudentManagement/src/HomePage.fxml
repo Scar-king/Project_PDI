@@ -8,32 +8,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #f0f4f8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController">
    <children>
 
-      <!-- Buttons -->
-      <VBox alignment="CENTER" layoutX="150.0" layoutY="253.0" spacing="15.0">
+      <VBox alignment="CENTER" layoutX="150.0" layoutY="197.0" prefWidth="300.0" spacing="20.0">
          <children>
-            <Button layoutX="150.0" layoutY="100.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white;" text="Add Student" />
-            <Button layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#viewStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #1abc9c; -fx-font-size: 16px; -fx-text-fill: white;" text="View Students" />
-            <Button layoutX="150.0" layoutY="220.0" mnemonicParsing="false" onAction="#updateStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #f39c12; -fx-font-size: 16px; -fx-text-fill: white;" text="Update Student" />
-            <Button layoutX="150.0" layoutY="280.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #e74c3c; -fx-font-size: 16px; -fx-text-fill: white;" text="Delete Student" />
+            <Button mnemonicParsing="false" onAction="#addStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="Add Student" />
+            <Button mnemonicParsing="false" onAction="#viewStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="View Students" />
+            <Button mnemonicParsing="false" onAction="#updateStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="Update Student" />
+            <Button mnemonicParsing="false" onAction="#deleteStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="Delete Student" />
+            
+            <Button mnemonicParsing="false" onAction="#exitApplication" prefHeight="50.0" prefWidth="157.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Exit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Button>
          </children>
       </VBox>
-      <Label layoutX="233.0" layoutY="82.0" prefHeight="47.0" prefWidth="214.0" text="Student Management Program">
+
+      <Label layoutX="211.0" layoutY="82.0" prefHeight="47.0" prefWidth="257.0" text="Student Management Program">
          <font>
-            <Font name="Arial" size="15.0" />
+            <Font name="Arial" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="100.0" fitWidth="114.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+
+      <ImageView fitHeight="100.0" fitWidth="114.0" layoutX="14.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@cropped-Logo-ITC.png" />
          </image>
       </ImageView>
+
       <Label layoutX="146.0" layoutY="59.0" text="The Institute of Technology of Cambodia">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
+
+      <Button layoutX="406.0" layoutY="542.0" mnemonicParsing="false" onAction="#showDeveloperDetails" prefHeight="43.0" prefWidth="179.0" style="-fx-background-color: transparent; -fx-underline: true;" text="Developer Details" textFill="#248bfb" />
+
    </children>
 </AnchorPane>

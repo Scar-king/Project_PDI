@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="523.0" prefWidth="850.0" style="-fx-background-color: e4eefc; -fx-padding: 10px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa); -fx-padding: 10px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController">
 
-    <TableView fx:id="studentTable" prefHeight="471.0" prefWidth="846.0" style="-fx-background-color: white; -fx-border-color: #cccccc;                        -fx-border-radius: 10px; -fx-border-width: 2px;">
+    <TableView fx:id="studentTable" layoutX="18.0" layoutY="111.0" prefHeight="400.0" prefWidth="565.0" style="-fx-background-color: white; -fx-border-color: #cccccc;                        -fx-border-radius: 10px; -fx-border-width: 2px;">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="100" style="-fx-alignment: CENTER;" text="ID">
                 <cellValueFactory>
@@ -54,8 +55,13 @@
         </columns>
     </TableView>
 
-    <Button fx:id="backButton" layoutX="14.0" layoutY="488.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #c7defa;" text="Back" textFill="WHITE">
+    <Button fx:id="backButton" layoutX="18.0" layoutY="536.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="565.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back HomePage" textFill="WHITE">
       <font>
-         <Font name="Arial Bold" size="12.0" />
+         <Font name="Arial Bold" size="15.0" />
       </font></Button>
+   <Label layoutX="207.0" layoutY="29.0" prefHeight="51.0" prefWidth="187.0" text="Student Details ">
+      <font>
+         <Font name="System Bold" size="25.0" />
+      </font>
+   </Label>
 </AnchorPane>

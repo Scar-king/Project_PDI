@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #e4eefc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentController">
    <children>
       <Label layoutX="100.0" layoutY="50.0" text="Add Student">
          <font>
@@ -70,14 +70,13 @@
       </Label>
       <TextField fx:id="endYearField" layoutX="200.0" layoutY="445.0" prefHeight="30.0" prefWidth="250.0" promptText="End Year" />
 
-      <Button fx:id="addButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #c7defa;" text="Add Student" textFill="WHITE">
+      <Button fx:id="addButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #3498db; -fx-background-radius: 20;" text="Add Student" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
 
-      <!-- Back Button -->
-      <Button fx:id="backButton" layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #e74c3c;" text="Back to Home" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
