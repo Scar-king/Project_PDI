@@ -8,7 +8,8 @@
     "d:\\Java\\JavaFX\\javafx-sdk-23.0.2\\lib\\javafx.media.jar",
     "d:\\Java\\JavaFX\\javafx-sdk-23.0.2\\lib\\javafx.swing.jar",
     "d:\\Java\\JavaFX\\javafx-sdk-23.0.2\\lib\\javafx.web.jar",
-    "d:\\Java\\JavaFX\\javafx-sdk-23.0.2\\lib\\javafx-swt.jar"
+    "d:\\Java\\JavaFX\\javafx-sdk-23.0.2\\lib\\javafx-swt.jar",
+    "d:\\MySQL\\mysql-connector-j-9.2.0\\mysql-connector-j-9.2.0\\mysql-connector-j-9.2.0.jar"
   ],
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

@@ -6,9 +6,19 @@
     "configurations": [
         {
             "type": "java",
+            "name": "testsql",
+            "request": "launch",
+            "mainClass": "testsql",
+            "projectName": "Project_PDI_31aff9e8"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
-            "mainClass": "${file}"
+            "mainClass": "${file}",
+            "classPaths": [
+                "D:/MySQL/mysql-connector-j-9.2.0/mysql-connector-j-9.2.0"
+            ]
         },
         {
             "type": "java",

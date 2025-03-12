@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
@@ -24,22 +25,18 @@ public class LoginPageController {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
-    
+    private Parent root; 
 
-    // Method to login the user
     @FXML
     public void login(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // Validate input fields before querying
         if (username.isEmpty() || password.isEmpty()) {
-            showAlert("Error", "Please enter both username and password.", AlertType.ERROR);
+            showAlert("Error", "Please enter both USERNAME and PASSWORD.", AlertType.ERROR);
             return;
         }
 
-        // Query to check if the username and password match the records in the database
         try (Connection connection = UserConnection.getConnection()) {
             String query = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -57,8 +54,7 @@ public class LoginPageController {
                 stage.setScene(scene);
                 stage.show();
             } else {
-                // Invalid credentials
-                showAlert("Error", "Invalid username or password.", AlertType.ERROR);
+                showAlert("Error", "Invalid USERNAME or PASSWORD.", AlertType.ERROR);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,19 +62,19 @@ public class LoginPageController {
         }
     }
 
-    // Method to go to the SignUp page
     @FXML
     public void goToSignUp(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("SignUp.fxml")); // Ensure this path is correct
+        root = FXMLLoader.load(getClass().getResource("SignUp.fxml")); 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    // Method to show an alert with the given title, message, and alert type
-    private void showAlert(String title, String message, AlertType type) {
+    public void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
+        stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
