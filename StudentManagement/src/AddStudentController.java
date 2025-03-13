@@ -31,12 +31,6 @@ public class AddStudentController {
     @FXML
     private TextField endYearField;
 
-    private ViewController controller;
-
-    public void setController(ViewController controller) {
-        this.controller = controller;
-    }
-
     @FXML
     public void addStudent(ActionEvent event) {
 
@@ -70,7 +64,7 @@ public class AddStudentController {
                 
                 Student newStudent = new Student(studentID, name, gender, age, major, studentEmail, startYear, endYear);
 
-                controller.students.add(newStudent);
+                ViewController.students.add(newStudent);
 
                 boolean dbAdded = Database.addStudentToDB(newStudent);
                 if (dbAdded) {
@@ -93,6 +87,12 @@ public class AddStudentController {
             return false;
         }
 
+        String name = nameField.getText();
+        if(!isVAlidName(name)){
+            showAlert("Error", "Name must contain only letters and spaces.", AlertType.ERROR);
+            return false;
+        }
+
         int age;
         try {
             age = Integer.parseInt(ageField.getText());
@@ -102,6 +102,12 @@ public class AddStudentController {
             }
         } catch (NumberFormatException e) {
             showAlert("Error", "Age must be a valid integer.", AlertType.ERROR);
+            return false;
+        }
+
+        String major = majorField.getText();
+        if(!isValidMajor(major)){
+            showAlert("Error", "Major must contain only letters and spaces.", AlertType.ERROR);
             return false;
         }
 
@@ -125,6 +131,12 @@ public class AddStudentController {
             return false;
         }
 
+        String email = studentEmailField.getText();
+        if(!isVAlidEmail(email)){
+            showAlert("Error", "Invalid email format. Please enter a valid email (e.g., example@gmail.com).", AlertType.ERROR);
+            return false;
+        }
+
         return true;   
     }
 
@@ -136,6 +148,19 @@ public class AddStudentController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private boolean isVAlidEmail(String email){
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
+        return email.matches(emailRegex);
+    }
+
+    private boolean isVAlidName(String name){
+        return name.matches("^[a-zA-Z ]+$");
+    }
+
+    private boolean isValidMajor(String major){
+        return major.matches("^[a-zA-Z ]+$");
     }
 
     @FXML

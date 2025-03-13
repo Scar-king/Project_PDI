@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -9,73 +8,70 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUPController">
-   <children>
-      <Label layoutX="255.0" layoutY="26.0" text="Sign Up">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font>
-      </Label>
-      
-      <Label layoutX="298.0" layoutY="100.0" text="Username">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="usernameField" layoutX="300.0" layoutY="128.0" prefHeight="30.0" prefWidth="250.0" promptText="Username" style="-fx-background-radius: 20;" />
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" 
+    xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUPController" stylesheets="@styles.css">
 
-      <Label layoutX="300.0" layoutY="172.0" text="Email">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="emailField" layoutX="300.0" layoutY="200.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-background-radius: 20;" />
+    <children>
+        <!-- Background Image -->
+        <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="1.0" layoutY="13.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@student.png" />
+            </image>
+        </ImageView>
 
-      <Label layoutX="300.0" layoutY="242.0" text="Password">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="passwordField" layoutX="300.0" layoutY="266.0" prefHeight="30.0" prefWidth="250.0" promptText="Password" style="-fx-background-radius: 20;" />
+        <!-- Title -->
+        <Label layoutX="200.0" layoutY="25.0" text="Sign Up">
+            <font>
+                <Font name="Arial Bold" size="45.0" />
+            </font>
+        </Label>
 
-      <Button fx:id="signUpButton" layoutX="300.0" layoutY="313.0" mnemonicParsing="false" onAction="#signUp" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #1969f4; -fx-text-fill: white; -fx-background-radius: 20;" text="Sign Up" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="15.0" />
-         </font>
-      </Button>
+        <!-- Username -->
+        <Label layoutX="130.0" layoutY="90.0" text="Username">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="usernameField" layoutX="130.0" layoutY="110.0" prefHeight="35.0" prefWidth="340.0" 
+            promptText="Username" style="-fx-background-radius: 20; -fx-padding: 5px;" />
 
-      <Label layoutX="326.0" layoutY="365.0" text="Already have an account?">
-         <font>
-            <Font size="12.0" />
-         </font>
-      </Label>
-      <Button layoutX="462.0" layoutY="359.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="47.0" style="-fx-background-color: transparent; -fx-text-fill: #255bb3; -fx-font-size: 12; -fx-underline: true;">
-         Login
-      </Button>
-      <AnchorPane prefHeight="400.0" prefWidth="250.0">
-         <children>
-            <ImageView fitHeight="400.0" fitWidth="250.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@cool.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="268.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@1177568.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="268.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@1000915.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="268.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@email.png" />
-         </image>
-      </ImageView>
+        <!-- Email -->
+        <Label layoutX="130.0" layoutY="155.0" text="Email">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <TextField fx:id="emailField" layoutX="130.0" layoutY="175.0" prefHeight="35.0" prefWidth="340.0" 
+            promptText="Email" style="-fx-background-radius: 20; -fx-padding: 5px;" />
 
-   </children>
+        <!-- Password -->
+        <Label layoutX="130.0" layoutY="220.0" text="Password">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+        <PasswordField fx:id="passwordField" layoutX="130.0" layoutY="240.0" prefHeight="35.0" prefWidth="340.0" 
+            promptText="Password" style="-fx-background-radius: 20; -fx-padding: 5px;" />
+
+        <!-- Sign Up Button -->
+        <Button fx:id="signUpButton" layoutX="130.0" layoutY="290.0" mnemonicParsing="false" onAction="#signUp" 
+            prefHeight="40.0" prefWidth="340.0" styleClass="button">
+            <font>
+                <Font name="Arial Bold" size="15.0" />
+            </font>
+            <text>Sign Up</text>
+        </Button>
+
+        <!-- Already have an account? -->
+        <Label layoutX="190.0" layoutY="345.0" text="Already have an account?">
+            <font>
+                <Font size="12.0" />
+            </font>
+        </Label>
+        <Button layoutX="360.0" layoutY="338.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="60.0"
+            styleClass="transparent-button">
+            <text>Login</text>
+        </Button>
+
+    </children>
 </AnchorPane>
