@@ -16,6 +16,7 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
         Image icon = new Image("cropped-Logo-ITC.png");
         stage.getIcons().add(icon);
+        stage.setTitle("Login");
         Scene scene = new Scene(root);
         
         stage.setResizable(false);

@@ -63,7 +63,7 @@ public class AddStudentController {
                 int startYear = Integer.parseInt(startYearField.getText());
                 int endYear = Integer.parseInt(endYearField.getText());
 
-                if (DatabaseUtil.isStudentDuplicate(studentID)) {
+                if (Database.isStudentDuplicate(studentID)) {
                     showAlert("Error", "A student with the same ID already exists.", AlertType.ERROR);
                     return;
                 }
@@ -72,7 +72,7 @@ public class AddStudentController {
 
                 controller.students.add(newStudent);
 
-                boolean dbAdded = DatabaseUtil.addStudentToDB(newStudent);
+                boolean dbAdded = Database.addStudentToDB(newStudent);
                 if (dbAdded) {
                     showAlert("Success", "Student Added Successfully", AlertType.INFORMATION);
                 } else {
@@ -125,7 +125,7 @@ public class AddStudentController {
             return false;
         }
 
-        return true;
+        return true;   
     }
 
     private void showAlert(String title, String message, AlertType type) {

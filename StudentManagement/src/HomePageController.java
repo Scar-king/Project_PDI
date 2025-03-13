@@ -21,6 +21,7 @@ public class HomePageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Student Management Program");
         stage.show();
     }
 
@@ -30,6 +31,7 @@ public class HomePageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Student Management Program");
         stage.show();
     }
 
@@ -39,6 +41,7 @@ public class HomePageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Student Management Program");
         stage.show();
     }
 
@@ -48,6 +51,7 @@ public class HomePageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Student Management Program");
         stage.show();
     }
 
@@ -70,7 +74,7 @@ public class HomePageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Developer Details");
+        stage.setTitle("Student Management Program");
         stage.show();
     }
 
@@ -80,6 +84,7 @@ public class HomePageController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Student Management Program");
         stage.show();
     }
 

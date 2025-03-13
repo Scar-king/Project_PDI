@@ -62,6 +62,7 @@ public class LoginPageController {
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
+                    stage.setTitle("Student Management Program");
                     stage.show();
                 } else {
                     showAlert("Error", "Invalid USERNAME or PASSWORD.", AlertType.ERROR);
@@ -82,6 +83,7 @@ public class LoginPageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Sign Up");
         stage.show();
     }
 

@@ -60,7 +60,7 @@ public class DeleteStudentController {
         endYearColumn.setCellValueFactory(new PropertyValueFactory<>("endYear"));
 
         // Load the student data from the database (or from the Controller)
-        students = DatabaseUtil.loadStudentsFromDB();
+        students = Database.loadStudentsFromDB();
         
         // Update the table items to reflect the loaded data
         studentTable.setItems(students);
@@ -85,7 +85,7 @@ public class DeleteStudentController {
             // Remove from the ObservableList
             students.remove(studentToDelete);
             // Remove from the database
-            boolean dbDeleted = DatabaseUtil.deleteStudentFromDB(studentToDelete.getStudentID());
+            boolean dbDeleted = Database.deleteStudentFromDB(studentToDelete.getStudentID());
             if (dbDeleted) {
                 deleted = true;
             }

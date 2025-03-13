@@ -61,7 +61,7 @@ public class ViewController {
         startYearColumn.setCellValueFactory(new PropertyValueFactory<>("startYear"));
         endYearColumn.setCellValueFactory(new PropertyValueFactory<>("endYear"));
 
-        students = DatabaseUtil.loadStudentsFromDB();
+        students = Database.loadStudentsFromDB();
 
         studentTable.setItems(students);
     }

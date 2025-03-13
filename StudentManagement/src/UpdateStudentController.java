@@ -99,7 +99,7 @@ public class UpdateStudentController {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 Student student = new Student(studentID, name, gender, age, majorField.getText(), email, startYear, endYear);
                 
-                boolean updated = DatabaseUtil.updateStudentInDB(student);
+                boolean updated = Database.updateStudentInDB(student);
                 
                 if (updated) {
                     showAlert("Success", "Student updated successfully!", AlertType.INFORMATION);
