@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UpdateStudentController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UpdateStudentController">
    <children>
 
       <Label layoutX="100.0" layoutY="50.0" style="-fx-font-weight: bold;" text="Update Student">
@@ -71,13 +71,13 @@
       </Label>
       <TextField fx:id="endYearField" layoutX="200.0" layoutY="445.0" prefHeight="30.0" prefWidth="250.0" promptText="End Year" />
 
-      <Button fx:id="updateButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" onAction="#updateStudent" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #3498db; -fx-background-radius: 20;" text="Update Student" textFill="WHITE">
+      <Button fx:id="updateButton" layoutX="100.0" layoutY="492.0" mnemonicParsing="false" onAction="#updateStudent" prefHeight="40.0" prefWidth="400.0" styleClass="update-button-page" text="Update Student" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
 
-      <Button layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back to Home" textFill="WHITE">
+      <Button layoutX="100.0" layoutY="550.0" mnemonicParsing="false" onAction="#backToHome" prefHeight="40.0" prefWidth="400.0" styleClass="backToHome-button" text="Back to Home" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>

@@ -90,6 +90,7 @@ public class AddStudentController {
         String name = nameField.getText();
         if(!isVAlidName(name)){
             showAlert("Error", "Name must contain only letters and spaces.", AlertType.ERROR);
+            nameField.clear();
             return false;
         }
 
@@ -98,16 +99,19 @@ public class AddStudentController {
             age = Integer.parseInt(ageField.getText());
             if (age < 4 || age > 50) {
                 showAlert("Error", "Age must be between 4 and 50!", AlertType.ERROR);
+                ageField.clear();
                 return false;
             }
         } catch (NumberFormatException e) {
             showAlert("Error", "Age must be a valid integer.", AlertType.ERROR);
+            ageField.clear();
             return false;
         }
 
         String major = majorField.getText();
         if(!isValidMajor(major)){
             showAlert("Error", "Major must contain only letters and spaces.", AlertType.ERROR);
+            majorField.clear();
             return false;
         }
 
@@ -117,23 +121,28 @@ public class AddStudentController {
             endYear = Integer.parseInt(endYearField.getText());
         } catch (NumberFormatException e) {
             showAlert("Error", "Start year and end year must be valid integers.", AlertType.ERROR);
+            startYearField.clear();
+            endYearField.clear();
             return false;
         }
 
         if (endYear < startYear) {
             showAlert("Error", "End year must be greater than or equal to start year.", AlertType.ERROR);
+            endYearField.clear();
             return false;
         }
 
         String gender = genderField.getText().toUpperCase(); 
         if (!gender.equals("M") && !gender.equals("F")) {
             showAlert("Error", "Gender must be either 'M' or 'F'.", AlertType.ERROR);
+            genderField.clear();
             return false;
         }
 
         String email = studentEmailField.getText();
         if(!isVAlidEmail(email)){
             showAlert("Error", "Invalid email format. Please enter a valid email (e.g., example@gmail.com).", AlertType.ERROR);
+            studentEmailField.clear();
             return false;
         }
 

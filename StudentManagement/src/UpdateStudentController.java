@@ -58,6 +58,13 @@ public class UpdateStudentController {
             return;
         }
 
+        // Validate Major (No numbers allowed)
+        if (!isValidMajor(majorField.getText())) {
+            showAlert("Invalid Major", "Major cannot contain numbers.", AlertType.ERROR);
+            majorField.clear();
+            return;
+        }
+
         gender = gender.toUpperCase();
         if (!gender.equals("M") && !gender.equals("F")) {
             showAlert("Invalid Gender", "Gender must be 'M' or 'F'.", AlertType.ERROR);
@@ -77,13 +84,13 @@ public class UpdateStudentController {
             
             if (age < 4 || age > 100) {
                 showAlert("Invalid Age", "Age must be between 4 and 100.", AlertType.ERROR);
-                ageField.clear();
+                ageField.clear();  
                 return;
             }
             
             if (endYear <= startYear) {
                 showAlert("Invalid Year Range", "End year must be greater than start year.", AlertType.ERROR);
-                startYearField.clear();
+                startYearField.clear();  
                 endYearField.clear();
                 return;
             }
@@ -113,9 +120,16 @@ public class UpdateStudentController {
         } catch (NumberFormatException e) {
             showAlert("Invalid Input", "Please enter valid numeric values for Age, Start Year, and End Year.", AlertType.ERROR);
             
-            ageField.clear();
-            startYearField.clear();
-            endYearField.clear();
+            // Reset only the fields that caused the error
+            if (ageField.getText().isEmpty()) {
+                ageField.clear();
+            }
+            if (startYearField.getText().isEmpty()) {
+                startYearField.clear();
+            }
+            if (endYearField.getText().isEmpty()) {
+                endYearField.clear();
+            }
         }
     }
 
@@ -133,6 +147,10 @@ public class UpdateStudentController {
         String regex = "^[a-zA-Z0-9._%+-]+@gmail\\.com$";
         Pattern pattern = Pattern.compile(regex);
         return pattern.matcher(email).matches();
+    }
+
+    private boolean isValidMajor(String major){
+        return major.matches("^[a-zA-Z ]+$");  
     }
 
     @FXML

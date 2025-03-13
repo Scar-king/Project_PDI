@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -58,12 +59,14 @@ public class HomePageController {
     @FXML
     public void exitApplication(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("cropped-Logo-ITC.png"));
         alert.setTitle("Exit Application");
         alert.setHeaderText("Are you sure you want to exit?");
         alert.setContentText("Unsaved data may be lost!");
         ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
         if(result == ButtonType.OK){
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
         }
     }

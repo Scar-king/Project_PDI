@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa); -fx-padding: 10px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa); -fx-padding: 10px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController" stylesheets="@styles.css">
 
     <TableView fx:id="studentTable" layoutX="18.0" layoutY="111.0" prefHeight="400.0" prefWidth="565.0" style="-fx-background-color: white; -fx-border-color: #cccccc;                        -fx-border-radius: 10px; -fx-border-width: 2px;">
         <columns>
@@ -55,7 +55,7 @@
         </columns>
     </TableView>
 
-    <Button fx:id="backButton" layoutX="18.0" layoutY="536.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="565.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back HomePage" textFill="WHITE">
+    <Button fx:id="backButton" layoutX="18.0" layoutY="536.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="565.0" styleClass="backToHome-button" text="Back HomePage" textFill="WHITE">
       <font>
          <Font name="Arial Bold" size="15.0" />
       </font></Button>

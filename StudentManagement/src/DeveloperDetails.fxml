@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController" stylesheets="@styles.css">
     <children>
         <ImageView fitHeight="120.0" fitWidth="87.0" layoutX="14.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 50;">
             <image>
@@ -65,7 +65,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button layoutX="201.0" layoutY="550.0" mnemonicParsing="false" onAction="#DeveloperToHome" prefHeight="40.0" prefWidth="197.0" style="-fx-background-color: #f39c12; -fx-background-radius: 20;" text="Back to HomePage" textFill="WHITE">
+      <Button layoutX="201.0" layoutY="550.0" mnemonicParsing="false" onAction="#DeveloperToHome" prefHeight="40.0" prefWidth="197.0" styleClass="backToHome-button" text="Back to HomePage" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

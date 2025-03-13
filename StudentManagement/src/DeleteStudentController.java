@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +15,9 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableView;  // Import TableView
 import javafx.scene.control.TableColumn; // Import TableColumn
 import javafx.scene.control.cell.PropertyValueFactory; // Import PropertyValueFactory
-
+import javafx.scene.image.Image;
 import java.io.IOException;
+import java.util.Optional;
 
 public class DeleteStudentController {
 
@@ -71,7 +73,11 @@ public class DeleteStudentController {
     public void deleteStudent(ActionEvent event) {
         String studentID = studentIDField.getText();
 
-        // Search for student by ID and remove them if found
+        if (studentID.isEmpty()) {
+            showAlert("Input Error", "Please enter a student ID.", AlertType.ERROR);
+            return;
+        }
+
         boolean deleted = false;
         Student studentToDelete = null;  // Keep reference to the student we want to delete
         for (Student student : students) {
@@ -82,26 +88,38 @@ public class DeleteStudentController {
         }
 
         if (studentToDelete != null) {
-            // Remove from the ObservableList
-            students.remove(studentToDelete);
-            // Remove from the database
-            boolean dbDeleted = Database.deleteStudentFromDB(studentToDelete.getStudentID());
-            if (dbDeleted) {
-                deleted = true;
+            // Show confirmation alert before deletion
+            Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+            Stage stage = (Stage) confirmationAlert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("cropped-Logo-ITC.png"));
+            confirmationAlert.setTitle("Confirm Deletion");
+            confirmationAlert.setHeaderText(null);
+            confirmationAlert.setContentText("Are you sure you want to delete this student?");
+            
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                students.remove(studentToDelete);
+                boolean dbDeleted = Database.deleteStudentFromDB(studentToDelete.getStudentID());
+                if (dbDeleted) {
+                    deleted = true;
+                }
             }
-        }
-
-        // Show alert based on whether the student was deleted or not
-        if (deleted) {
-            showAlert("Student Deleted", "The student was successfully deleted.", AlertType.INFORMATION);
         } else {
             showAlert("Student Not Found", "No student with the provided ID was found.", AlertType.ERROR);
+            return;
+        }
+
+        if (deleted) {
+            showAlert("Student Deleted", "The student was successfully deleted.", AlertType.INFORMATION);
         }
     }
 
     // Helper method to show an alert
     private void showAlert(String title, String message, AlertType alertType) {
         Alert alert = new Alert(alertType);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("cropped-Logo-ITC.png"));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
