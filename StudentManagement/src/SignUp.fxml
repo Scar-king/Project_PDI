@@ -69,7 +69,7 @@
             </font>
         </Label>
         <Button layoutX="360.0" layoutY="338.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="60.0"
-            styleClass="transparent-button">
+            styleClass="transparent-button" style="-fx-background-color: transparent; -fx-underline: true;">
             <text>Login</text>
         </Button>
 

@@ -78,6 +78,6 @@
 
       <!-- Don't have an account label and Sign Up Button with hover effect -->
       <Label layoutX="327.0" layoutY="346.0" text="Don't have an account?" />
-      <Button layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="27.0" prefWidth="63.0" styleClass="transparent-button" text="Sign Up" />
+      <Button layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="27.0" prefWidth="63.0" styleClass="transparent-button" style="-fx-background-color: transparent; -fx-underline: true;" text="Sign Up" />
    </children>
 </AnchorPane>

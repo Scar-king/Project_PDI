@@ -10,22 +10,76 @@
     -fx-transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover effect for the login button */
+/* Hover effect */
 .button:hover {
     -fx-background-color: #155bb5;
     -fx-cursor: hand;
-    -fx-scale-x: 1.05; /* Slightly increase size for hover effect */
+    -fx-scale-x: 1.05;
     -fx-scale-y: 1.05;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
 }
 
-/* Active (pressed) effect for the login button */
+/* Active (pressed) effect */
 .button:pressed {
     -fx-background-color: #10478f;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2); /* Smaller shadow when pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
 }
 
-/* Transparent sign up button style */
+/* Red button for exit */
+.red-button {
+    -fx-background-color: red;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for red button */
+.red-button:hover {
+    -fx-background-color: #c0392b;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for red button */
+.red-button:pressed {
+    -fx-background-color: #a93226;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+/* Blue button for delete */
+.blue-button {
+    -fx-background-color: #1969f4;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for red button */
+.blue-button:hover {
+    -fx-background-color: #c0392b;
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for red button */
+.blue-button:pressed {
+    -fx-background-color: #a93226;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+/* Transparent button style */
 .transparent-button {
     -fx-background-color: transparent;
     -fx-text-fill: #1969f4;
@@ -36,16 +90,131 @@
     -fx-transition: color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover effect for transparent button */
 .transparent-button:hover {
     -fx-cursor: hand;
-    -fx-text-fill: white;
+    -fx-text-fill: red;
     -fx-scale-x: 1.05; 
     -fx-scale-y: 1.05;
 }
 
-/* Active (pressed) effect for the transparent sign up button */
+/* Active (pressed) effect for transparent button */
 .transparent-button:pressed {
-    -fx-text-fill: white;
+    -fx-text-fill: red;
     -fx-scale-x: 1;
     -fx-scale-y: 1;
 }
+
+/* Default button style for Add */
+.add-button {
+    -fx-background-color: #1969f4; /* Green for Add */
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for Add */
+.add-button:hover {
+    -fx-background-color: #218838; /* Darker Green for Hover */
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for Add */
+.add-button:pressed {
+    -fx-background-color: #1e7e34; /* Even darker green for pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+
+/* Default button style for View */
+.view-button {
+    -fx-background-color: #1969f4; /* Teal for View */
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for View */
+.view-button:hover {
+    -fx-background-color: #138496; /* Darker Teal for Hover */
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for View */
+.view-button:pressed {
+    -fx-background-color: #0f6f7c; /* Even darker teal for pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+
+/* Default button style for Update */
+.update-button {
+    -fx-background-color: #1969f4; /* Amber/Yellow for Update */
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for Update */
+.update-button:hover {
+    -fx-background-color: #e0a800; /* Darker Amber for Hover */
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for Update */
+.update-button:pressed {
+    -fx-background-color: #d39e00; /* Even darker amber for pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+
+/* Default button style for Delete */
+.delete-button {
+    -fx-background-color: #1969f4; /* Red for Delete */
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for Delete */
+.delete-button:hover {
+    -fx-background-color: #c82333; /* Darker Red for Hover */
+    -fx-cursor: hand;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 5);
+}
+
+/* Active (pressed) effect for Delete */
+.delete-button:pressed {
+    -fx-background-color: #bd2130; /* Even darker red for pressed */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
+}
+
+
+

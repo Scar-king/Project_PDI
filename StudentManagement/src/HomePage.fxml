@@ -8,17 +8,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePageController" stylesheets="@styles.css">
    <children>
 
       <VBox alignment="CENTER" layoutX="150.0" layoutY="197.0" prefWidth="300.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#addStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="Add Student" />
-            <Button mnemonicParsing="false" onAction="#viewStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="View Students" />
-            <Button mnemonicParsing="false" onAction="#updateStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="Update Student" />
-            <Button mnemonicParsing="false" onAction="#deleteStudent" prefHeight="50.0" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-font-size: 16px; -fx-text-fill: white; -fx-background-radius: 20; -fx-padding: 10px 20px;" text="Delete Student" />
+            <Button mnemonicParsing="false" onAction="#addStudent" prefHeight="50.0" prefWidth="300.0" styleClass="add-button" text="Add Student" />
+            <Button mnemonicParsing="false" onAction="#viewStudent" prefHeight="50.0" prefWidth="300.0" styleClass="view-button" text="View Students" />
+            <Button mnemonicParsing="false" onAction="#updateStudent" prefHeight="50.0" prefWidth="300.0" styleClass="update-button" text="Update Student" />
+            <Button mnemonicParsing="false" onAction="#deleteStudent" prefHeight="50.0" prefWidth="300.0" styleClass="delete-button" text="Delete Student" />
             
-            <Button mnemonicParsing="false" onAction="#exitApplication" prefHeight="50.0" prefWidth="157.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Exit" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#exitApplication" prefHeight="50.0" prefWidth="157.0" styleClass="red-button" text="Exit" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>
@@ -43,7 +43,7 @@
          </font>
       </Label>
 
-      <Button layoutX="406.0" layoutY="542.0" mnemonicParsing="false" onAction="#showDeveloperDetails" prefHeight="43.0" prefWidth="179.0" style="-fx-background-color: transparent; -fx-underline: true;" text="Developer Details" textFill="#248bfb" />
+      <Button layoutX="406.0" layoutY="542.0" mnemonicParsing="false" onAction="#showDeveloperDetails" prefHeight="43.0" prefWidth="179.0" styleClass="transparent-button" style="-fx-background-color: transparent; -fx-underline: true;" text="Developer Details" textFill="#248bfb" />
 
    </children>
 </AnchorPane>
