@@ -6,11 +6,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DeleteStudentController">
    <children>
+      <ImageView fitHeight="638.0" fitWidth="593.0" layoutX="4.0" layoutY="8.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image\background.png" />
+         </image>
+      </ImageView>
       <TableView fx:id="studentTable" layoutX="50.0" layoutY="108.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: #cccccc;                        -fx-border-radius: 10px; -fx-border-width: 2px;">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="100" style="-fx-alignment: CENTER;" text="ID">
@@ -56,15 +63,15 @@
          </columns>
       </TableView>
 
-      <Label layoutX="100.0" layoutY="50.0" style="-fx-font-weight: bold;" text="Delete Student">
+      <Label layoutX="96.0" layoutY="35.0" style="-fx-font-weight: bold;" text="Delete Student">
          <font>
-            <Font name="Arial" size="24.0" />
+            <Font name="Arial" size="35.0" />
          </font>
       </Label>
 
       <Label layoutX="100.0" layoutY="450.0" text="Student ID">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
       <TextField fx:id="studentIDField" layoutX="200.0" layoutY="445.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter Student ID to Delete" />

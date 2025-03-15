@@ -1,11 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,11 +18,15 @@ public class UpdateStudentController {
     @FXML
     private TextField nameField;
     @FXML
-    private TextField genderField;
+    private CheckBox maleCheckBox;
+    @FXML
+    private CheckBox femaleCheckBox;
     @FXML
     private TextField ageField;
     @FXML
-    private TextField majorField;
+    private CheckBox seCheckBox;
+    @FXML
+    private CheckBox aiecsCheckBox;
     @FXML
     private TextField emailField;
     @FXML
@@ -38,42 +38,55 @@ public class UpdateStudentController {
     private Button updateButton;
     
     @FXML
+    private void handleGenderSelection() {
+        if (maleCheckBox.isSelected()) {
+            femaleCheckBox.setSelected(false);
+        } else if (femaleCheckBox.isSelected()) {
+            maleCheckBox.setSelected(false);
+        }
+    }
+    
+    @FXML
     public void updateStudent(ActionEvent event) throws IOException {
-
+        
         String studentID = studentIDField.getText();
         String name = nameField.getText();
-        String gender = genderField.getText();
         String email = emailField.getText();
         
+        String gender = "";
+        if (maleCheckBox.isSelected()) {
+            gender = "M";
+        } else if (femaleCheckBox.isSelected()) {
+            gender = "F";
+        }
+
+        String major = "";
+        if (seCheckBox.isSelected()) {
+            major = "SE";
+        } else if (aiecsCheckBox.isSelected()) {
+            major = "AIECS";
+        }
+
+        if (major.isEmpty()) {
+            showAlert("Invalid Major", "Please select either SE or AIECS.", Alert.AlertType.ERROR);
+            return;
+        }
+        
         if (studentID.isEmpty() || name.isEmpty() || gender.isEmpty() || email.isEmpty() ||
-            ageField.getText().isEmpty() || majorField.getText().isEmpty() ||
+            ageField.getText().isEmpty() || major.isEmpty() ||
             startYearField.getText().isEmpty() || endYearField.getText().isEmpty()) {
-            showAlert("Invalid Input", "All fields must be filled.", AlertType.ERROR);
+            showAlert("Invalid Input", "All fields must be filled.", Alert.AlertType.ERROR);
             return;
         }
 
         if (name.matches(".*\\d.*")) {
-            showAlert("Invalid Name", "Name cannot contain numbers.", AlertType.ERROR);
+            showAlert("Invalid Name", "Name cannot contain numbers.", Alert.AlertType.ERROR);
             nameField.clear();
             return;
         }
 
-        // Validate Major (No numbers allowed)
-        if (!isValidMajor(majorField.getText())) {
-            showAlert("Invalid Major", "Major cannot contain numbers.", AlertType.ERROR);
-            majorField.clear();
-            return;
-        }
-
-        gender = gender.toUpperCase();
-        if (!gender.equals("M") && !gender.equals("F")) {
-            showAlert("Invalid Gender", "Gender must be 'M' or 'F'.", AlertType.ERROR);
-            genderField.clear();
-            return;
-        }
-
         if (!isValidGmail(email)) {
-            showAlert("Invalid Email", "Please enter a valid Gmail address (e.g., example@gmail.com).", AlertType.ERROR);
+            showAlert("Invalid Email", "Please enter a valid Gmail address (e.g., example@gmail.com).", Alert.AlertType.ERROR);
             return;
         }
 
@@ -83,60 +96,62 @@ public class UpdateStudentController {
             int endYear = Integer.parseInt(endYearField.getText());
             
             if (age < 4 || age > 100) {
-                showAlert("Invalid Age", "Age must be between 4 and 100.", AlertType.ERROR);
+                showAlert("Invalid Age", "Age must be between 4 and 100.", Alert.AlertType.ERROR);
                 ageField.clear();  
                 return;
             }
             
+            if (startYear < 2024 || startYear > 2026) {
+                showAlert("Invalid Start Year", "Start year must be between 2024 and 2026.", Alert.AlertType.ERROR);
+                startYearField.clear();
+                return;
+            }
+            if (endYear < 2024 || endYear > 2026) {
+                showAlert("Invalid End Year", "End year must be between 2024 and 2026.", Alert.AlertType.ERROR);
+                endYearField.clear();
+                return;
+            }
             if (endYear <= startYear) {
-                showAlert("Invalid Year Range", "End year must be greater than start year.", AlertType.ERROR);
+                showAlert("Invalid Year Range", "End year must be greater than start year.", Alert.AlertType.ERROR);
                 startYearField.clear();  
                 endYearField.clear();
                 return;
             }
             
-            Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             Stage stage = (Stage) confirmationAlert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("Image\\itc.png")));
             confirmationAlert.setTitle("Confirm Update");
             confirmationAlert.setHeaderText(null);
             confirmationAlert.setContentText("Are you sure you want to update this student's details?");
             
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                Student student = new Student(studentID, name, gender, age, majorField.getText(), email, startYear, endYear);
+                Student student = new Student(studentID, name, gender, age, major, email, startYear, endYear);
                 
                 boolean updated = Database.updateStudentInDB(student);
                 
                 if (updated) {
-                    showAlert("Success", "Student updated successfully!", AlertType.INFORMATION);
+                    showAlert("Success", "Student updated successfully!", Alert.AlertType.INFORMATION);
                     backToHome(event);
                 } else {
-                    showAlert("Error", "Failed to update student. Please check the ID and try again.", AlertType.ERROR);
+                    showAlert("Error", "Failed to update student. Please check the ID and try again.", Alert.AlertType.ERROR);
                 }
             } else {
-                showAlert("Update Canceled", "The update operation was canceled.", AlertType.INFORMATION);
+                showAlert("Update Canceled", "The update operation was canceled.", Alert.AlertType.INFORMATION);
             }
         } catch (NumberFormatException e) {
-            showAlert("Invalid Input", "Please enter valid numeric values for Age, Start Year, and End Year.", AlertType.ERROR);
-            
-            // Reset only the fields that caused the error
-            if (ageField.getText().isEmpty()) {
-                ageField.clear();
-            }
-            if (startYearField.getText().isEmpty()) {
-                startYearField.clear();
-            }
-            if (endYearField.getText().isEmpty()) {
-                endYearField.clear();
-            }
+            showAlert("Invalid Input", "Please enter valid numeric values for Age, Start Year, and End Year.", Alert.AlertType.ERROR);
+            ageField.clear();
+            startYearField.clear();
+            endYearField.clear();
         }
     }
 
-    private void showAlert(String title, String message, AlertType alertType) { 
+    private void showAlert(String title, String message, Alert.AlertType alertType) { 
         Alert alert = new Alert(alertType);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("Image\\itc.png")));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -149,13 +164,18 @@ public class UpdateStudentController {
         return pattern.matcher(email).matches();
     }
 
-    private boolean isValidMajor(String major){
-        return major.matches("^[a-zA-Z ]+$");  
+    @FXML
+    private void handleMajorSelection() {
+        if (seCheckBox.isSelected()) {
+            aiecsCheckBox.setSelected(false);
+        } else if (aiecsCheckBox.isSelected()) {
+            seCheckBox.setSelected(false);
+        }
     }
 
     @FXML
     public void backToHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML\\HomePage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -13,8 +13,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
-        Image icon = new Image("cropped-Logo-ITC.png");
+        Parent root = FXMLLoader.load(getClass().getResource("FXML\\LoginPage.fxml"));
+        Image icon = new Image("Image\\itc.png");
         stage.getIcons().add(icon);
         stage.setTitle("Login");
         Scene scene = new Scene(root);
@@ -24,5 +24,3 @@ public class App extends Application {
         stage.show();
     }
 }
-
-

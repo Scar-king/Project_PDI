@@ -58,7 +58,7 @@ public class LoginPageController {
                     showAlert("Success", "Login successful!", AlertType.INFORMATION);
     
                     // Navigate to HomePage after successful login
-                    root = FXMLLoader.load(getClass().getResource("HomePage.fxml")); 
+                    root = FXMLLoader.load(getClass().getResource("FXML\\HomePage.fxml")); 
                     stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -79,7 +79,7 @@ public class LoginPageController {
 
     @FXML
     public void goToSignUp(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("SignUp.fxml")); 
+        root = FXMLLoader.load(getClass().getResource("FXML\\SignUp.fxml")); 
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -91,7 +91,7 @@ public class LoginPageController {
     public void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
         stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("Image\\itc.png")));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

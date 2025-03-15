@@ -38,4 +38,3 @@ public class Student {
     public void setStartYear(int startYear) { this.startYear = startYear; }
     public void setEndYear(int endYear) { this.endYear = endYear; }
 }
-

@@ -325,5 +325,143 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 2);
 }
 
+/* profile */
 
+/* General button styling */
+.buttonP {
+    -fx-background-color: #1969f4;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+.buttonP:hover {
+    -fx-background-color: #1557c0;
+}
+
+.social-button {
+    -fx-background-color: #3b5998; /* Facebook color */
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-button:hover {
+    -fx-background-color: #2d4373; /* Hover effect */
+}
+
+/* Edit profile button specific styling */
+.edit-button {
+    -fx-background-color: #4CAF50;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 3);
+    -fx-transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Container for the profile info */
+.center {
+    -fx-background-color: #f4f4f4;
+    -fx-border-radius: 10;
+    -fx-padding: 20;
+    -fx-background-radius: 20;
+}
+
+.hyperlink {
+    -fx-text-fill: #248bfb; /* Change the text color */
+    -fx-font-size: 14px;
+    -fx-underline: true; /* Add underline */
+    -fx-cursor: hand; /* Add pointer cursor */
+}
+
+/* PasswordField styles */
+.password-field {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 15px; /* Slightly reduced radius for a smoother look */
+    -fx-padding: 8px 12px; /* Reduced padding for a more compact look */
+    -fx-border-color: #c7c7c7;
+    -fx-border-radius: 15px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 123, 255, 0.3), 5, 0, 0, 5); /* Blue shadow */
+    -fx-pref-height: 28px; /* Reduced height */
+}
+
+.password-field:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #ffffff;
+}
+
+/* TextField styles */
+.text-field {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 15px;
+    -fx-padding: 10px;
+    -fx-border-color: #c7c7c7;
+    -fx-border-radius: 15px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 255, 0.3), 5, 0, 0, 3);
+}
+
+.text-field:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #ffffff;
+}
+
+.text-field:hover {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #e6f1fe;
+}
+
+.text-field .text {
+    -fx-fill: #333333;
+}
+
+/* Label and TextField prompt styling */
+.text-field .prompt-text {
+    -fx-fill: #aaa;
+}
+
+/* Checkbox styles */
+.checkbox {
+    -fx-background-color: transparent;
+    -fx-border-radius: 20px;
+    -fx-border-color: #c7c7c7;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 255, 0.3), 5, 0, 0, 3);
+}
+
+.checkbox:hover {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #b3d8ff;
+    -fx-background-radius: 20px;
+}
+
+.checkbox:selected {
+    -fx-border-color: #4a90e2;
+    -fx-border-color: #007bff;  /* Brighter blue for selected state */
+    -fx-border-width: 2px;  /* Ensure border stays consistent */
+}
+
+.checkbox:selected .check-mark {
+    -fx-fill: #4a90e2;
+}
+
+.checkbox .text {
+    -fx-fill: #333333;
+}

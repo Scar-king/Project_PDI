@@ -7,9 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class AddStudentController {
@@ -19,11 +20,15 @@ public class AddStudentController {
     @FXML
     private TextField nameField;
     @FXML
-    private TextField genderField;
+    private CheckBox maleCheckBox;  
+    @FXML
+    private CheckBox femaleCheckBox; 
     @FXML
     private TextField ageField;
     @FXML
-    private TextField majorField;
+    private CheckBox seCheckBox;
+    @FXML
+    private CheckBox aiecsCheckBox;
     @FXML
     private TextField studentEmailField;
     @FXML
@@ -37,9 +42,8 @@ public class AddStudentController {
         if (isInputValid()) {
 
             Alert alert = new Alert(AlertType.CONFIRMATION);
-
             Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
-            alertStage.getIcons().add(new Image("cropped-Logo-ITC.png"));
+            alertStage.getIcons().add(new Image("Image\\itc.png"));
         
             alert.setTitle("Confirm Add Student");
             alert.setHeaderText("Are you sure you want to add this student?");
@@ -50,9 +54,10 @@ public class AddStudentController {
             if (result == ButtonType.OK) {
                 String studentID = studentIDField.getText();
                 String name = nameField.getText();
-                String gender = genderField.getText().toUpperCase();
+                String gender = getGender();  // Get gender from checkboxes
                 int age = Integer.parseInt(ageField.getText());
-                String major = majorField.getText();
+                // String major = majorField.getText();
+                String major = getMajor();
                 String studentEmail = studentEmailField.getText();
                 int startYear = Integer.parseInt(startYearField.getText());
                 int endYear = Integer.parseInt(endYearField.getText());
@@ -78,9 +83,18 @@ public class AddStudentController {
         }
     }
 
+    private String getMajor(){
+        if(seCheckBox.isSelected()) {
+            return "SE";
+        } else if (aiecsCheckBox.isSelected()) {
+            return "AIECS";
+        }
+        return "";
+    }
+
     private boolean isInputValid() {
-        if (studentIDField.getText().isEmpty() || nameField.getText().isEmpty() || genderField.getText().isEmpty() ||
-            ageField.getText().isEmpty() || majorField.getText().isEmpty() || studentEmailField.getText().isEmpty() ||
+        if (studentIDField.getText().isEmpty() || nameField.getText().isEmpty() || !isGenderSelected() ||
+            ageField.getText().isEmpty() || !isMajorSelected() || studentEmailField.getText().isEmpty() ||
             startYearField.getText().isEmpty() || endYearField.getText().isEmpty()) {
 
             showAlert("Error", "All fields must be filled out.", AlertType.ERROR);
@@ -108,13 +122,6 @@ public class AddStudentController {
             return false;
         }
 
-        String major = majorField.getText();
-        if(!isValidMajor(major)){
-            showAlert("Error", "Major must contain only letters and spaces.", AlertType.ERROR);
-            majorField.clear();
-            return false;
-        }
-
         int startYear, endYear;
         try {
             startYear = Integer.parseInt(startYearField.getText());
@@ -126,16 +133,21 @@ public class AddStudentController {
             return false;
         }
 
-        if (endYear < startYear) {
-            showAlert("Error", "End year must be greater than or equal to start year.", AlertType.ERROR);
+        if (startYear < 2024 || startYear > 2026) {
+            showAlert("Error", "Start year must be between 2024 and 2026.", AlertType.ERROR);
+            startYearField.clear();
+            return false;
+        }
+    
+        if (endYear < 2024 || endYear > 2026) {
+            showAlert("Error", "End year must be between 2024 and 2026.", AlertType.ERROR);
             endYearField.clear();
             return false;
         }
 
-        String gender = genderField.getText().toUpperCase(); 
-        if (!gender.equals("M") && !gender.equals("F")) {
-            showAlert("Error", "Gender must be either 'M' or 'F'.", AlertType.ERROR);
-            genderField.clear();
+        if (endYear < startYear) {
+            showAlert("Error", "End year must be greater than or equal to start year.", AlertType.ERROR);
+            endYearField.clear();
             return false;
         }
 
@@ -149,10 +161,45 @@ public class AddStudentController {
         return true;   
     }
 
+    private boolean isGenderSelected() {
+        return maleCheckBox.isSelected() || femaleCheckBox.isSelected();
+    }
+
+    private String getGender() {
+        if (maleCheckBox.isSelected()) {
+            return "M";
+        } else if (femaleCheckBox.isSelected()) {
+            return "F";
+        } 
+        return "";
+    }
+
+    private boolean isMajorSelected() {
+        return seCheckBox.isSelected() || aiecsCheckBox.isSelected();
+    }
+
+    @FXML
+    private void handleMajorSelection() {
+        if (seCheckBox.isSelected()) {
+            aiecsCheckBox.setSelected(false);
+        } else if (aiecsCheckBox.isSelected()) {
+            seCheckBox.setSelected(false);
+        }
+    }
+
+    @FXML
+    public void handleGenderSelection() {
+        if (maleCheckBox.isSelected()) {
+            femaleCheckBox.setSelected(false);
+        } else if (femaleCheckBox.isSelected()) {
+            maleCheckBox.setSelected(false);
+        }
+    }
+
     private void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("Image\\itc.png")));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -168,14 +215,10 @@ public class AddStudentController {
         return name.matches("^[a-zA-Z ]+$");
     }
 
-    private boolean isValidMajor(String major){
-        return major.matches("^[a-zA-Z ]+$");
-    }
-
     @FXML
     public void goToHomePage(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("\\FXML\\HomePage.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

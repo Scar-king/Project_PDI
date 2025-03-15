@@ -89,7 +89,7 @@ public class SignUPController {
             showAlert("Error", "Database error: " + e.getMessage(), AlertType.ERROR);
         }
 
-        root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("FXML\\LoginPage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -98,7 +98,7 @@ public class SignUPController {
 
     @FXML
     public void goToLogin(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("FXML\\LoginPage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -109,7 +109,7 @@ public class SignUPController {
     private void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
         stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("cropped-Logo-ITC.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("Image\\itc.png")));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

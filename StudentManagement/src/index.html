@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Details</title>
+</head>
+<style>
+  .developer-information {
+  background-color: rgb(255, 250, 250);
+  display: flex;
+  padding: 137px 33px;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.team-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.team-member-card {
+  flex: 1;
+  border-radius: 50px;
+  background-color: #fff;
+  box-shadow: 0px 4px 75px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  font-family:
+    Lato,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  color: #252525;
+  text-align: center;
+  padding-top: 18px;
+}
+
+.card-content {
+  padding: 0 17px;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.corner-icon {
+  aspect-ratio: 0.94;
+  object-fit: contain;
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  display: flex;
+  margin-top: 29px;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.profile-image {
+  aspect-ratio: 0.92;
+  object-fit: contain;
+  width: 168px;
+  border-radius: 100px;
+  max-width: 100%;
+}
+
+.member-name {
+  font-size: 35px;
+  font-weight: 700;
+  margin: 15px 0 0;
+  color: inherit;
+}
+
+.member-role {
+  color: rgb(38, 35, 92);
+  font-size: 23px;
+  font-weight: 400;
+  margin: 14px 0 0;
+}
+
+.member-description {
+  margin: 29px 0 0;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.email-button {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: rgb(49, 104, 255);
+  margin-top: 30px;
+  padding: 2px 34px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: background-color 0.3s ease;
+}
+
+.email-button:hover,
+.email-button:focus {
+  background-color: rgb(39, 83, 204);
+  outline: none;
+}
+
+.email-button:focus-visible {
+  outline: 2px solid rgb(49, 104, 255);
+  outline-offset: 2px;
+}
+
+.card-footer-image {
+  aspect-ratio: 6.54;
+  object-fit: contain;
+  width: 540px;
+  border-radius: 50px;
+  margin-top: 28px;
+  align-self: center;
+}
+
+@media (max-width: 991px) {
+  .developer-information {
+    padding: 100px 20px;
+  }
+
+  .team-grid {
+    flex-direction: column;
+    gap: 21px;
+  }
+
+  .team-member-card {
+    width: 100%;
+  }
+
+  .email-button {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+</style>
+<body>
+  <section class="developer-information">
+    <div class="team-grid">
+      <article class="team-member-card">
+        <div class="card-content">
+          <div class="card-header">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c7d1dcefa02d2fb5ab929fd2b17193e2ef5edda8c1aedac552e8b0505b3d0005?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+              alt="Decorative icon"
+              class="corner-icon"
+            />
+            <div class="profile-info">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7822a4cac9f8b1bcdc30a9573c8acaad422596677f0fcdfa6f99786ce759204?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+                alt="Profile photo of Davin Do"
+                class="profile-image"
+              />
+              <h2 class="member-name">Davin Do</h2>
+              <h3 class="member-role">Leader</h3>
+            </div>
+          </div>
+          <p class="member-description">
+            I am responsible for designing all the pages, implementing Java code,
+            and integrating MySQL using JavaFX and Scene Builder
+          </p>
+          <a
+            href="mailto:dodavin96@gmail.com"
+            class="email-button"
+            aria-label="Email Davin Do"
+          >
+            dodavin96@gmail.com
+          </a>
+        </div>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0ee5ce94ff5760c03600c4523ed3f9ef6300c292323bbbdf39d5df4f2e2c0f1e?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+          alt="Decorative bottom border"
+          class="card-footer-image"
+        />
+      </article>
+  
+      <article class="team-member-card">
+        <div class="card-content">
+          <div class="card-header">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c7d1dcefa02d2fb5ab929fd2b17193e2ef5edda8c1aedac552e8b0505b3d0005?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+              alt="Decorative icon"
+              class="corner-icon"
+            />
+            <div class="profile-info">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/d9d111622dc27514a436566cc53ca7a702b3982c12a89ccc600a7675d8425dba?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+                alt="Profile photo of Chea Panharith"
+                class="profile-image"
+              />
+              <h2 class="member-name">Chea Panharith</h2>
+              <h3 class="member-role">Developer</h3>
+            </div>
+          </div>
+          <p class="member-description">
+            Handles UI/UX design in Figma, converts designs to HTML & CSS, manages
+            OTP system, and works with MySQL.
+          </p>
+          <a
+            href="mailto:panharith@gmail.com"
+            class="email-button"
+            aria-label="Email Chea Panharith"
+          >
+            panharith@gmail.com
+          </a>
+        </div>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0ee5ce94ff5760c03600c4523ed3f9ef6300c292323bbbdf39d5df4f2e2c0f1e?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+          alt="Decorative bottom border"
+          class="card-footer-image"
+        />
+      </article>
+  
+      <article class="team-member-card">
+        <div class="card-content">
+          <div class="card-header">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c7d1dcefa02d2fb5ab929fd2b17193e2ef5edda8c1aedac552e8b0505b3d0005?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+              alt="Decorative icon"
+              class="corner-icon"
+            />
+            <div class="profile-info">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/a67aef27fe9a95d08c89572073a1a9e4f568e26c3c33269db9b0f36af6edc4a3?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+                alt="Profile photo of Khun Sotravong"
+                class="profile-image"
+              />
+              <h2 class="member-name">Khun Sotravong</h2>
+              <h3 class="member-role">Developer</h3>
+            </div>
+          </div>
+          <p class="member-description">
+            Responsible for research, writing proposals, preparing presentations, and contributing creative ideas to the project.
+          </p>
+          <a
+            href="mailto:Khunvong609@gmail.com"
+            class="email-button"
+            aria-label="Email Khun Sotravong"
+          >
+            Khunvong609@gmail.com
+          </a>
+        </div>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0ee5ce94ff5760c03600c4523ed3f9ef6300c292323bbbdf39d5df4f2e2c0f1e?placeholderIfAbsent=true&apiKey=9eb68e1370814c47a030d9d976a1764c"
+          alt="Decorative bottom border"
+          class="card-footer-image"
+        />
+      </article>
+    </div>
+  </section>
+  
+</body>
+</html>

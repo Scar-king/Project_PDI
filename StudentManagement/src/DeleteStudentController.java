@@ -78,23 +78,41 @@ public class DeleteStudentController {
             return;
         }
 
-        boolean deleted = false;
-        Student studentToDelete = null;  // Keep reference to the student we want to delete
+        Student studentToDelete = null;
         for (Student student : students) {
             if (student.getStudentID().equals(studentID)) {
-                studentToDelete = student;  // Found the student
+                studentToDelete = student;
                 break;
             }
         }
 
         if (studentToDelete != null) {
+      // Format student details to show in the confirmation alert
+        String studentInfo = String.format(
+            """
+            Student ID  : %s
+            Name        : %s
+            Gender      : %s
+            Major       : %s
+            Email       : %s
+            Start Year  : %d
+            End Year    : %d
+            """,
+            studentToDelete.getStudentID(),
+            studentToDelete.getName(),
+            studentToDelete.getGender(),
+            studentToDelete.getMajor(),
+            studentToDelete.getStudentEmail(),
+            studentToDelete.getStartYear(),
+            studentToDelete.getEndYear()
+        );
             // Show confirmation alert before deletion
-            Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+            Alert confirmationAlert = new Alert(AlertType.WARNING);
             Stage stage = (Stage) confirmationAlert.getDialogPane().getScene().getWindow();
-            stage.getIcons().add(new Image("cropped-Logo-ITC.png"));
-            confirmationAlert.setTitle("Confirm Deletion");
-            confirmationAlert.setHeaderText(null);
-            confirmationAlert.setContentText("Are you sure you want to delete this student?");
+            stage.getIcons().add(new Image("Image\\itc.png"));
+            confirmationAlert.setTitle("Deletion");
+            confirmationAlert.setHeaderText("Are you sure you want to delete this student?");
+            confirmationAlert.setContentText(studentInfo);
             
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             
@@ -102,16 +120,13 @@ public class DeleteStudentController {
                 students.remove(studentToDelete);
                 boolean dbDeleted = Database.deleteStudentFromDB(studentToDelete.getStudentID());
                 if (dbDeleted) {
-                    deleted = true;
+                    // deleted = true;
+                    showAlert("Student Deleted", "The student was successfully deleted.", AlertType.INFORMATION);
                 }
             }
         } else {
             showAlert("Student Not Found", "No student with the provided ID was found.", AlertType.ERROR);
             return;
-        }
-
-        if (deleted) {
-            showAlert("Student Deleted", "The student was successfully deleted.", AlertType.INFORMATION);
         }
     }
 
@@ -119,7 +134,7 @@ public class DeleteStudentController {
     private void showAlert(String title, String message, AlertType alertType) {
         Alert alert = new Alert(alertType);
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("cropped-Logo-ITC.png"));
+        stage.getIcons().add(new Image("Image\\itc.png"));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -129,7 +144,7 @@ public class DeleteStudentController {
     // Method to go back to the HomePage
     @FXML
     public void backToHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML\\HomePage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -4,6 +4,6 @@ import java.sql.SQLException;
 
 public class UserConnection {
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/user_management", "root", "12345678");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/user_management", "root", System.getenv("PASSWORD"));
     }
 }

@@ -9,23 +9,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPageController" stylesheets="@styles.css">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginPageController">
    <children>
 
-      <AnchorPane prefHeight="400.0" prefWidth="225.0" style="-fx-background-color: white; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+      <AnchorPane prefHeight="400.0" prefWidth="250.0" style="-fx-background-color: linear-gradient(to right, #e4eefc, #c7defa); -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 3);">
          <children>
-            <ImageView fitHeight="127.0" fitWidth="179.0" layoutX="48.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="127.0" fitWidth="179.0" layoutX="60.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@cropped-Logo-ITC.png" />
+                  <Image url="@Image\itc.png" />
                </image>
             </ImageView>
-            <Label layoutX="53.0" layoutY="79.0" text="Welcome User!">
+            <Label layoutX="64.0" layoutY="79.0" text="Welcome User!">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="75.0" layoutY="338.0" text="Developed by" />
-            <Label layoutX="90.0" layoutY="361.0" text="Group 3">
+            <Label layoutX="87.0" layoutY="338.0" text="Developed by" />
+            <Label layoutX="101.0" layoutY="361.0" text="Group 3">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -33,15 +33,9 @@
          </children>
       </AnchorPane>
 
-      <Label layoutX="255.0" layoutY="24.0" text="Student Management Program">
+      <Label layoutX="363.0" layoutY="45.0" prefHeight="51.0" prefWidth="103.0" text="Login">
          <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
-      </Label>
-      
-      <Label layoutX="389.0" layoutY="63.0" text="Login" textFill="#1969f4">
-         <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
 
@@ -51,11 +45,6 @@
          </font>
       </Label>
       <TextField fx:id="usernameField" layoutX="300.0" layoutY="162.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter your username" style="-fx-background-radius: 15;" />
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="260.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@1177568.png" />
-         </image>
-      </ImageView>
 
       <Label layoutX="300.0" layoutY="210.0" text="Password">
          <font>
@@ -63,11 +52,6 @@
          </font>
       </Label>
       <PasswordField fx:id="passwordField" layoutX="300.0" layoutY="234.0" prefHeight="30.0" prefWidth="250.0" promptText="Enter your password" style="-fx-background-radius: 15;" />
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="260.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@1000915.png" />
-         </image>
-      </ImageView>
 
       <!-- Login Button with hover effect -->
       <Button layoutX="300.0" layoutY="290.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="250.0" styleClass="button" text="Login">
@@ -78,6 +62,6 @@
 
       <!-- Don't have an account label and Sign Up Button with hover effect -->
       <Label layoutX="327.0" layoutY="346.0" text="Don't have an account?" />
-      <Button layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="27.0" prefWidth="63.0" styleClass="transparent-button" style="-fx-background-color: transparent; -fx-underline: true;" text="Sign Up" />
+      <Button layoutX="452.0" layoutY="341.0" mnemonicParsing="false" onAction="#goToSignUp" prefHeight="27.0" prefWidth="63.0" style="-fx-background-color: transparent; -fx-underline: true;" styleClass="transparent-button" text="Sign Up" />
    </children>
 </AnchorPane>
