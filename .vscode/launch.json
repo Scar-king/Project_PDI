@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LoginPage",
+            "request": "launch",
+            "mainClass": "LoginPage",
+            "projectName": "Project_PDI_31aff9e8"
+        },
+        {
+            "type": "java",
             "name": "testsql",
             "request": "launch",
             "mainClass": "testsql",

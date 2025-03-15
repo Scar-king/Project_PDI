@@ -24,7 +24,7 @@ public class HomePageController {
         try {
             // Open the hyperlink URL in the default browser
             if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().browse(new URI("https://davindo-portfolio-website.netlify.app/"));
+                Desktop.getDesktop().browse(new URI("https://developerinfomation.netlify.app/"));
             }
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
